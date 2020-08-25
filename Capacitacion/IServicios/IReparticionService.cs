@@ -8,5 +8,8 @@ namespace Capacitacion.IServicios
     public interface IReparticionService : ICommonServices
     {
         Task<ICollection<Reparticion>> ObtenerReparticiones();
+        Reparticion ObtenerReparticion(long idReparticion);
+        bool RegistrarReparticion(Reparticion reparticion);
+        ICollection<Reparticion> ObtenerTodosSp();
     }
 }

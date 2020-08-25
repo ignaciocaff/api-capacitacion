@@ -8,5 +8,6 @@ namespace Capacitacion.IRepositorios
 {
     public interface IReparticionRepositorio : IRepository<Reparticion>
     {
+        ICollection<Reparticion> ObtenerTodosSp();
     }
 }
