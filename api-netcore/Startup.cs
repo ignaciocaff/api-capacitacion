@@ -39,6 +39,7 @@ namespace api_netcore
              typeof(ReparticionService).Assembly);
             services.AddTransient<IReparticionRepositorio, ReparticionRepositorio>();
             services.AddTransient<IReparticionService, ReparticionService>();
+            services.AddSwaggerGen();
 
         }
 
@@ -54,6 +55,13 @@ namespace api_netcore
                      .AllowAnyMethod()
                      .AllowAnyHeader());
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api Capacitación");
+            });
 
             app.UseRouting();
 

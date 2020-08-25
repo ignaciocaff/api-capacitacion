@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Capacitacion.IServicios;
 using Capacitacion.Modelos;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api_netcore.Controllers
@@ -25,7 +26,10 @@ namespace api_netcore.Controllers
         }
 
         [HttpGet, Route("obtener-reparticion/{idReparticion}")]
-        public IActionResult GetById(long idReparticion)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
+        public IActionResult GetById(int idReparticion)
         {
             try
             {
@@ -40,6 +44,9 @@ namespace api_netcore.Controllers
         }
 
         [HttpPost, Route("registrar")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
         public IActionResult RegistrarReparticion([FromBody]Reparticion reparticion)
         {
             try
@@ -54,7 +61,10 @@ namespace api_netcore.Controllers
             }
         }
 
-        [HttpPost, Route("obtener-sp")]
+        [HttpGet, Route("obtener-sp")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
         public IActionResult ObtenerTodosSp()
         {
             try
